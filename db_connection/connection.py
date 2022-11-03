@@ -9,28 +9,34 @@ class get_data():
         """
         Get connection creds for database
         """
-        server = os.environ.get() 
-        usr = os.environ.get() 
-        pwd = os.environ.get()
+        server = os.environ.get('davebryan_db_server') 
+        usr = os.environ.get('davebryan_db_usr') 
+        pwd = os.environ.get('davebryan_db_pwd')
         return server, usr, pwd
     
-    def connect_to_db(usr,pwd,server):
+    def connect_to_db():
         """
         connect to database using pyodbc
         """
-        conn_string = f"""DRIVER=MySQL ODBC 8.0 ANSI Driver;UID={usr};PWD={pwd};Server{server}=:3306;Database=testdb;Port=3306"""
+        server, usr, pwd = get_data.get_credentials()
+        conn_string = f"""DRIVER=MySQL ODBC 8.0 ANSI Driver;UID={usr};PWD={pwd};Server={server}:3306;Database=testdb;Port=3306"""
+        print(conn_string)
         db_connection = pyodbc.connect(conn_string)
         return db_connection
     
-    def select_db(db_connection):
+    def select_db(query:str):
         """
         Select from a table
         """
-        return
+        cursor = get_data.connect_to_db.cursor()
+        cursor.execute()
+        cursor.commit()
+        cursor.close()
 
-    def insert_db(db_connection):
+    def insert_db(query:str):
         """
         insert in to a table
         """
         return
 
+get_data.connect_to_db()
