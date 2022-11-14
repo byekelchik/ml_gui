@@ -12,6 +12,7 @@ class get_data():
         server = os.environ.get('davebryan_db_server') 
         usr = os.environ.get('davebryan_db_usr') 
         pwd = os.environ.get('davebryan_db_pwd')
+
         return server, usr, pwd
     
     def connect_to_db():
@@ -19,8 +20,12 @@ class get_data():
         connect to database using pyodbc
         """
         server, usr, pwd = get_data.get_credentials()
+
+        server = 'localhost'
+        usr = 'root'
+        pwd = 'lehigh2020'
+
         conn_string = f"""DRIVER=MySQL ODBC 8.0 ANSI Driver;UID={usr};PWD={pwd};Server={server}:3306;Database=testdb;Port=3306"""
-        print(conn_string)
         db_connection = pyodbc.connect(conn_string)
         return db_connection
     
@@ -28,9 +33,9 @@ class get_data():
         """
         Select from a table
         """
-        cursor = get_data.connect_to_db.cursor()
+        cursor = get_data.connect_to_db.cursor() 
         cursor.execute()
-        cursor.commit()
+        cursor.commit(query)
         cursor.close()
 
     def insert_db(query:str):
@@ -39,4 +44,3 @@ class get_data():
         """
         return
 
-get_data.connect_to_db()
