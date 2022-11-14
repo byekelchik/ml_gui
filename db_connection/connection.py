@@ -23,7 +23,6 @@ class get_data():
 
         server = 'localhost'
         usr = 'root'
-        pwd = 'lehigh2020'
 
         conn_string = f"""DRIVER=MySQL ODBC 8.0 ANSI Driver;UID={usr};PWD={pwd};Server={server}:3306;Database=testdb;Port=3306"""
         db_connection = pyodbc.connect(conn_string)
