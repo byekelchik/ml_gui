@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Add Row</title>
+<style>
+
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+<h2>Add to Table</h2>
+
+<table class="GeneratedTable">
+    <thead>
+      <tr>
+        <th>ID*</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+           
+        <form action="/addrow/" method="POST">
+            <div class="add_input">
+                <tr>
+                    <td>
+                        <input type="text" name="id" id="id">
+                    </td>
+                    <td>
+                        <input type="text" name="firstname" id="firstname">
+                    </td>
+                    <td>
+                        <input type="text" name="lastname" id="lastname">
+                    </td>
+                    <td>
+                        <input type="range" min="1" max="135" value="25" oninput="rangeValue.innerText = this.value" name="age" id="age">
+                        <p id="rangeValue">25</p>
+                    </td>
+                </tr>
+            </div>
+            <input type="submit" value="Add Row">
+    
+        </form>
+        
+        
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<title>Task Master</title>
+<style>
+    table.GeneratedTable {
+      width: 100%;
+      background-color: #ffffff;
+      border-collapse: collapse;
+      border-width: 2px;
+      border-color: #0d0d0d;
+      border-style: solid;
+      color: #000000;
+    }
+    
+    table.GeneratedTable td, table.GeneratedTable th {
+      border-width: 2px;
+      border-color: #0d0d0d;
+      border-style: solid;
+      padding: 3px;
+    }
+    
+    table.GeneratedTable thead {
+      background-color: #8796c5;
+    }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+<h2>DB Results</h2>
+
+<table class="GeneratedTable">
+    <thead>
+      <tr>
+        <th>ID*</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}    
+
+        <tr>
+            <td>{{task.ID}}</td>
+            <td>{{task.FirstName}}</td>
+            <td>{{task.LastName}}</td>
+            <td>{{task.Age}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="Button">
+    <a class="btn btn-primary" href="addrow">
+      <button>Add Row</button>
+    </a>
+  </div>
+
+{% endblock %}
